@@ -1,0 +1,62 @@
+experiment:
+  name: ftm_kpe_v1
+  description: "Five-measure OWA variant reported as the main FTM-KPE configuration"
+  seed: null  # Set explicitly before a reproducible run.
+
+pipeline:
+  preprocessing:
+    steps:
+      - segmentation
+      - tokenization
+      - lemmatization
+      - stopword_removal
+      - pos_tagging
+
+  candidates:
+    pos_patterns:
+      - [NOUN]
+      - [NOUN, NOUN]
+      - [ADJ, NOUN]
+      - [ADJ, NOUN, NOUN]
+      - [NUM, NOUN]
+
+  relatedness:
+    measures:
+      - positional_distance
+      - pmi
+      - lch
+      - jcn
+      - bert_cosine
+    excluded_measures:
+      - syntactic_similarity
+    normalization:
+      orientation: similarity
+      range: [0.0, 1.0]
+      pmi_scope: document
+
+  aggregation:
+    method: owa
+    quantifier: most_feng_dillon
+
+  clustering:
+    method: fuzzy_c_means
+    number_of_topics: 15
+    fuzzifier: 2.0
+    maximum_iterations: null  # Not specified in the manuscript.
+    convergence_threshold: null  # Not specified in the manuscript.
+
+  ranking:
+    graph: complete_topic_graph
+    edge_weight: mean_dsr_between_topics
+    damping_factor: 0.85
+
+  selection:
+    primary_criterion: highest_frequency
+    tie_breaker: combined
+    phrases_per_topic: 1
+
+evaluation:
+  averaging: macro_document
+  metrics: [precision, recall, f1]
+  cutoff: 15
+  matching: porter_stemmed_exact

@@ -1,0 +1,8 @@
+dataset:
+  name: replace_me
+  documents_dir: data/raw/replace_me/documents
+  references_file: data/raw/replace_me/references.txt
+  encoding: utf-8
+  license: replace_me
+  source_url: replace_me
+  checksum: replace_me

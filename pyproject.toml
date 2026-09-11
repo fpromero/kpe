@@ -1,0 +1,64 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ftm-kpe"
+version = "0.1.0"
+description = "Fuzzy semantic topic modeling for unsupervised keyphrase extraction"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
+authors = [
+  { name = "Yamel Pérez-Guadarramas" },
+  { name = "Alfredo Simón-Cuevas" },
+  { name = "Francisco P. Romero" },
+  { name = "José A. Olivas" },
+  { name = "Jesús Serrano-Guerrero" },
+]
+dependencies = [
+  "docx2txt>=0.8",
+  "fuzzy-c-means>=1.6",
+  "kneed>=0.8",
+  "nltk>=3.7",
+  "numpy>=1.23",
+  "PyYAML>=6.0",
+  "scikit-learn>=1.2",
+  "scipy>=1.9",
+  "spacy>=3.4",
+  "torch>=1.12",
+  "transformers>=4.22",
+]
+
+[project.scripts]
+ftm-kpe-legacy = "ftm_kpe.cli:main"
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8",
+  "pytest-cov>=5",
+  "ruff>=0.6",
+]
+api = [
+  "flask>=2.2",
+  "requests>=2.28",
+]
+analysis = [
+  "extract-msg>=0.41",
+  "matplotlib>=3.5",
+  "pandas>=1.4",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"ftm_kpe.legacy" = ["patterns/*.txt"]
+
+[tool.pytest.ini_options]
+addopts = "--strict-markers --strict-config"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"

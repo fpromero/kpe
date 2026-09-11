@@ -1,0 +1,31 @@
+experiment:
+  name: legacy_current
+  description: "Configuration implemented by the imported research prototype"
+
+pipeline:
+  language: en
+  top_topic_fraction: 0.75
+  top_keyphrases: 15
+
+  relatedness:
+    measures:
+      - syntactic_similarity
+      - positional_distance
+      - pmi
+      - bert_cosine
+
+  aggregation:
+    method: owa
+    quantifier: pasi
+
+  clustering:
+    method: fuzzy_c_means
+    number_of_topics: 15
+
+  selection:
+    criterion_code: "2"
+    criterion: highest_frequency
+
+resources:
+  bert_model: bert-base-uncased
+  spacy_model: en_core_web_sm

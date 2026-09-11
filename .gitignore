@@ -1,0 +1,60 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+
+# Editors and operating systems
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Local secrets and environment overrides
+.env
+.env.*
+!.env.example
+
+# Downloaded datasets and derived corpora
+data/raw/*
+!data/raw/*/
+data/raw/*/*
+!data/raw/*/.gitkeep
+data/external/*
+data/interim/*
+data/processed/*
+!data/external/.gitkeep
+!data/interim/.gitkeep
+!data/processed/.gitkeep
+
+# Downloaded models, NLP resources and caches
+.cache/
+models/
+nltk_data/
+
+# Generated experiment outputs
+results/runs/*
+results/figures/*
+results/tables/*
+results/statistical_tests/*
+!results/runs/.gitkeep
+!results/figures/.gitkeep
+!results/tables/.gitkeep
+!results/statistical_tests/.gitkeep
+
+# Notebook state
+.ipynb_checkpoints/
+
+# Build artifacts
+build/
+dist/
+
+# Temporary files
+tmp/
+*.log

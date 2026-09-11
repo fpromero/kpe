@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the associated article and this repository."
+title: "FTM-KPE: Fuzzy Topic Modeling for Keyphrase Extraction"
+type: software
+authors:
+  - family-names: "Pérez-Guadarramas"
+    given-names: "Yamel"
+  - family-names: "Simón-Cuevas"
+    given-names: "Alfredo"
+  - family-names: "Romero"
+    given-names: "Francisco P."
+  - family-names: "Olivas"
+    given-names: "José A."
+  - family-names: "Serrano-Guerrero"
+    given-names: "Jesús"
+license: Apache-2.0
+repository-code: "https://github.com/fpromero/kpe"
+abstract: >-
+  Reference implementation of an unsupervised keyphrase extraction method
+  based on semantic topic modeling, OWA aggregation and fuzzy clustering.
